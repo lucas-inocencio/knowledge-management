@@ -15,20 +15,19 @@ const Login = () => {
 
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-				<h1 className='text-3xl font-semibold text-center text-gray-300'>
+			<div className='w-full p-6 rounded-lg shadow-md bg-black bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border-4 border-black'>
+				<h1 className='text-4xl font-semibold text-center text-black'>
 					Login
-					<span className='text-blue-500'> ChatApp</span>
 				</h1>
 
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label className='label p-2'>
-							<span className='text-base label-text'>Username</span>
+							<span className='text-1xl font-semibold text-center text-black'>Usuário</span>
 						</label>
 						<input
 							type='text'
-							placeholder='Enter username'
+							placeholder='Informe seu usuário'
 							className='w-full input input-bordered h-10'
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
@@ -37,18 +36,18 @@ const Login = () => {
 
 					<div>
 						<label className='label'>
-							<span className='text-base label-text'>Password</span>
+							<span className='text-1xl font-semibold text-center text-black'>Senha</span>
 						</label>
 						<input
 							type='password'
-							placeholder='Enter Password'
+							placeholder='Informe sua senha'
 							className='w-full input input-bordered h-10'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
 					</div>
-					<Link to='/signup' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
-						{"Don't"} have an account?
+					<Link to='/signup' className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block text-black active:text-blue-600'>
+						{"Primeiro"} acesso? Clique aqui.
 					</Link>
 
 					<div>
@@ -62,45 +61,3 @@ const Login = () => {
 	);
 };
 export default Login;
-
-// STARTER CODE FOR THIS FILE
-// const Login = () => {
-// 	return (
-// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-// 					Login
-// 					<span className='text-blue-500'> ChatApp</span>
-// 				</h1>
-
-// 				<form>
-// 					<div>
-// 						<label className='label p-2'>
-// 							<span className='text-base label-text'>Username</span>
-// 						</label>
-// 						<input type='text' placeholder='Enter username' className='w-full input input-bordered h-10' />
-// 					</div>
-
-// 					<div>
-// 						<label className='label'>
-// 							<span className='text-base label-text'>Password</span>
-// 						</label>
-// 						<input
-// 							type='password'
-// 							placeholder='Enter Password'
-// 							className='w-full input input-bordered h-10'
-// 						/>
-// 					</div>
-// 					<a href='#' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
-// 						{"Don't"} have an account?
-// 					</a>
-
-// 					<div>
-// 						<button className='btn btn-block btn-sm mt-2'>Login</button>
-// 					</div>
-// 				</form>
-// 			</div>
-// 		</div>
-// 	);
-// };
-// export default Login;
