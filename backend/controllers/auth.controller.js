@@ -7,13 +7,13 @@ export const signup = async (req, res) => {
 		const { fullName, username, password, confirmPassword, gender } = req.body;
 
 		if (password !== confirmPassword) {
-			return res.status(400).json({ error: "Passwords don't match" });
+			return res.status(400).json({ error: "As senhas devem ser iguais!" });
 		}
 
 		const user = await User.findOne({ username });
 
 		if (user) {
-			return res.status(400).json({ error: "Username already exists" });
+			return res.status(400).json({ error: "Esse usuário já existe!" });
 		}
 
 		// HASH PASSWORD HERE
@@ -24,13 +24,14 @@ export const signup = async (req, res) => {
 
 		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
 		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+		const otherProfilePic = `https://avatar.iran.liara.run/username?username=${username}&bold=false&length=1`;
 
 		const newUser = new User({
 			fullName,
 			username,
 			password: hashedPassword,
 			gender,
-			profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+			profilePic: gender === "male" ? boyProfilePic : gender === "female" ? girlProfilePic : otherProfilePic,
 		});
 
 		if (newUser) {
@@ -60,7 +61,7 @@ export const login = async (req, res) => {
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
 		if (!user || !isPasswordCorrect) {
-			return res.status(400).json({ error: "Invalid username or password" });
+			return res.status(400).json({ error: "Usuário ou senha inválida!" });
 		}
 
 		generateTokenAndSetCookie(user._id, res);
@@ -80,7 +81,7 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
 	try {
 		res.cookie("jwt", "", { maxAge: 0 });
-		res.status(200).json({ message: "Logged out successfully" });
+		res.status(200).json({ message: "Você foi desconectado com sucesso." });
 	} catch (error) {
 		console.log("Error in logout controller", error.message);
 		res.status(500).json({ error: "Internal Server Error 3" });

@@ -37,17 +37,17 @@ export default useSignup;
 
 function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
 	if (!fullName || !username || !password || !confirmPassword || !gender) {
-		toast.error("Please fill in all fields");
+		toast.error("Preencha todos os campos!");
 		return false;
 	}
 
 	if (password !== confirmPassword) {
-		toast.error("Passwords do not match");
+		toast.error("As senhas devem ser iguais!");
 		return false;
 	}
 
 	if (password.length < 6) {
-		toast.error("Password must be at least 6 characters");
+		toast.error("Sua senha deve ter pelo menos 6 caracteres.");
 		return false;
 	}
 
